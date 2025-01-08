@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Rock Paper Scissor</p>
+    <button onclick="
+        result('Rock');
+    ">Rock</button>
+    <button onclick="
+        result('Paper');
+    ">Paper</button>
+    <button onclick="
+        result('Scissor');
+    ">Scissor</button>
+
+    <script>
+        function computerMove() {
+            let compMove = '';
+            const random = Math.random();
+            if (random > 0 && random < 1 / 3) {
+                compMove = 'Rock';
+            } else if(random > 1 / 3 && random < 2 / 3) {
+                compMove = 'Paper';
+            } else if (random > 2 / 3 && random < 1) {
+                compMove = 'Scissor';
+            }
+            return compMove;
+        }
+        
+        function result(playerMove) {
+            let result = ''
+            let compMove =  computerMove();
+            if (playerMove == compMove) {
+                result = 'Draw';
+            } else {
+                if (playerMove == 'Rock') {
+                    if(compMove == 'Paper') {
+                        result = 'Computer Wins';
+                    } else {
+                        result = 'You Wins';
+                    }
+                }
+                if (playerMove == 'Paper') {
+                    if(compMove == 'Scissor') {
+                        result = 'Computer Wins';
+                    } else {
+                        result = 'You Wins';
+                    }
+                }
+                if (playerMove == 'Scissor') {
+                    if(compMove == 'Rock') {
+                        result = 'Computer Wins';
+                    } else {
+                        result = 'You Wins';
+                    }
+                }
+            }
+            alert(`Your move: ${playerMove}, Computer move: ${compMove} -> ${result}`);
+        }
+    </script>
+</body>
+</html>
